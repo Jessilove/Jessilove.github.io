@@ -1,0 +1,151 @@
+{{ define "main" }}
+<div class="page clearfix" index>
+    <div class="left">
+        <h1>{{ .Site.Title }}</h1>
+        <small>{{ .Site.Params.briefIntro }}</small>
+        <hr>
+        <ul>
+            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+            {{ range $paginator.Pages }}
+              <li>
+                <h2>
+                  <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>{{ .Date.Format "2006-01-02" }}
+                    </div>
+                    <div class="label-card">
+                        {{ with .Params.author }}<i class="fa fa-user"></i>{{ . }}
+                        {{ end }}
+                    </div>
+                    <div class="label-card">
+                        {{ with .Params.meta }}<i class="fa fa-key"></i>{{ . }}{{ end }}
+                    </div>
+
+                    <div class="label-card">
+                    {{ partial "category.html" . }}
+                    </div>
+
+                    <div class="label-card">
+                    {{ partial "tag.html" . }}
+                    </div>
+                </div>
+                <div class="excerpt">
+                    {{ .Summary }}
+                </div>
+                <div class="read-all">
+                    <a href="{{ .RelPermalink }}"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            {{ end }}
+        </ul>
+
+        <!-- Pagination links -->
+        <div class="pagination">
+          {{ if $paginator.HasPrev }}
+            <a href="{{ .Site.BaseURL }}" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="{{ $paginator.Prev.URL }}" class="previous"><i class="fa fa-angle-left"></i></a>
+          {{ else }}
+            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
+            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
+          {{ end }}
+          <span class="page_number ">{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+          {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="{{ .Site.BaseURL }}page/{{ $paginator.TotalPages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+          {{ else }}
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+          {{ end }}
+        </div>
+    </div>
+    <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
+    <div class="right">
+        <div class="wrap">
+            <div class="side">
+                <div>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Recent Posts
+                </div>
+                <ul class="content-ul" recent>
+                    {{ range first 10 .Site.RegularPages.ByDate.Reverse }}
+                        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <div class="side ">
+                <div>
+                    <i class="fa fa-th-list"></i>
+                    Categories
+                </div>
+                <ul class="content-ul" cate>
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    <li>
+                        <a href="{{ "/categories/" | relLangURL }}#{{ $name | urlize }}" class="categories-list-item" cate="{{ $name }}">
+                            <span class="name">
+                                {{ $name }}
+                            </span>
+                            <span class="badge">{{ len $taxonomy }}</span>
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <div class="side">
+                <div>
+                    <i class="fa fa-tags"></i>
+                    Tags
+                </div>
+                <div class="tags-cloud">
+                    {{ $tags := .Site.Taxonomies.tags }}
+                    {{ if gt (len $tags) 0 }}
+                        {{ $maxCount := 0 }}
+                        {{ $minCount := 0 }}
+                        {{ range $name, $taxonomy := $tags }}
+                            {{ if gt $taxonomy.Count $maxCount }}
+                                {{ $maxCount = $taxonomy.Count }}
+                            {{ end }}
+                            {{ if or (eq $minCount 0) (lt $taxonomy.Count $minCount) }}
+                                {{ $minCount = $taxonomy.Count }}
+                            {{ end }}
+                        {{ end }}
+
+                        {{ $diff := sub $maxCount $minCount }}
+                        {{ if eq $diff 0 }}
+                            {{ $diff = 1 }}
+                        {{ end }}
+
+                        {{ range $name, $taxonomy := $tags }}
+                            {{ $temp := div (mul (sub $taxonomy.Count $minCount) 36) $diff }}
+                            {{ $base := div $temp 4 }}
+                            {{ $remain := mod $temp 4 }}
+                            {{ $size := 9 }}
+                            {{ $color := 9 }}
+                            {{ if eq $remain 0 }}
+                                {{ $size = add $base 9 }}
+                                {{ $color = sub 9 $base }}
+                            {{ else if or (eq $remain 1) (eq $remain 2) }}
+                                {{ $size = printf "%s.5" (string (add $base 9)) }}
+                                {{ if eq $remain 1 }}
+                                    {{ $color = sub 9 $base }}
+                                {{ else }}
+                                    {{ $color = sub 8 $base }}
+                                {{ end }}
+                            {{ else }}
+                                {{ $size = add $base 10 }}
+                                {{ $color = sub 8 $base }}
+                            {{ end }}
+                            <a href="{{ "/tags/" | relLangURL }}#{{ $name | urlize }}" style="font-size: {{ $size }}pt; color: #{{ $color }}{{ $color }}{{ $color }};">{{ $name }}</a>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

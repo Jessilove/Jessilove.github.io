@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="page clearfix">
+    <div class="left">
+        <h1>{{ .Title }}</h1>
+        <hr>
+        <ul>
+            {{ range .Site.Taxonomies.categories.Alphabetical }}
+            <h2 id="{{ .Name }}">{{ .Name }}</h2>
+            {{ range .Pages }}
+            <li>
+                <time>
+                    {{ .Date.Format "2006-01-02" }} {{ .Date.Format "Mon" }}.
+                </time>
+                <a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+                {{ partial "category.html" . }}
+                {{ partial "tag.html" . }}
+            </li>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    {{ range .Site.Taxonomies.categories.Alphabetical }}
+                    <li>
+                        <a data-scroll href="#{{ .Name }}">
+                            {{ .Name }} ({{ .Count }})
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ "js/pageContent.js" | absURL }}" charset="utf-8"></script>
+{{ end }}

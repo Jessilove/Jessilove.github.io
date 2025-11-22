@@ -1,0 +1,11 @@
+{{ $tags := .Params.tags }}
+{{ with $tags }}
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  {{ range $index, $tag := $tags }}
+    <a href="{{ "/tags/" | relLangURL }}#{{ $tag | urlize }}" title="Tag: {{ $tag }}" rel="tag">{{ $tag }}</a>
+    {{ if ne $index (sub (len $tags) 1) }}&nbsp;{{ end }}
+  {{ end }}
+</span>
+{{ end }}

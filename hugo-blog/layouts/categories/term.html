@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="page clearfix">
+    <div class="left">
+        <h1>分类：{{ .Title }}</h1>
+        <hr>
+        <ul>
+            {{ range .Pages }}
+            <li>
+                <time>
+                    {{ .Date.Format "2006-01-02" }} {{ .Date.Format "Mon" }}.
+                </time>
+                <a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+                {{ partial "category.html" . }}
+                {{ partial "tag.html" . }}
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+            <div class="side">
+                <div>
+                    <i class="fa fa-th-list"></i>
+                    共 {{ len .Pages }} 篇文章
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

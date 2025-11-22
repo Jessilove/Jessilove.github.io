@@ -1,0 +1,28 @@
+baseURL = 'https://Jessilove.github.io/'
+title = "Jessi & Achel's Home"
+languageCode = "zh-CN"
+defaultContentLanguage = "zh-cn"
+
+[pagination]
+  pagerSize = 6
+
+[permalinks]
+  posts = "/:year/:month/:day/:title/"
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  briefIntro = "Our Lovely Paradise"
+  email = "znliubuaa@gmail.com"
+  githubUsername = "Jessilove"
+  baiduTongjiId = "552aa8d99c04e57a157ba015b317ce20"
+  googleAnalyticsId = "UA-72449510-4"
+  descriptionFooter = "THIS IS OUR HOME!"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"

@@ -1,0 +1,33 @@
+<footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+            {{ .Site.Params.descriptionFooter }}
+        </p>
+        <p class="contact">
+            Contact me at: {{ with .Site.Params.githubUsername }}
+            <a href="https://github.com/{{ . }}" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a> {{ end }} {{ with .Site.Params.email }}
+            <a href="mailto:{{ . }}" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> {{ end }} {{ with .Site.Params.weiboUsername }}
+            <a href="http://weibo.com/{{ . }}" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a> {{ end }} {{ with .Site.Params.zhihuUsername }}
+            <a href="https://www.zhihu.com/people/{{ . }}" title="Zhihu"><i class="iconfont icon-daoruzhihu"></i></a> {{ end }} {{ with .Site.Params.twitterUsername }}
+            <a href="https://twitter.com/{{ . }}" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a> {{ end }} {{ with .Site.Params.facebookUsername }}
+            <a href="https://www.facebook.com/{{ . }}" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a> {{ end }}  {{ with .Site.Params.linkedInUsername }}
+            <a href="https://www.linkedin.com/in/{{ . }}" title="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a> {{ end }} {{ with .Site.Params.dribbbleUsername }}
+            <a href=" https://dribbble.com/{{ . }}" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a> {{ end }}
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> & <a href="https://pages.github.com/" target="_blank">Github Pages</a>.
+            </span>
+            <span>
+                Theme designed by <a>HyG</a>.
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

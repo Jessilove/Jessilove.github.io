@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客管理面板 - Jessi & Achel's Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            color: #4d6dad;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 i {
+            font-size: 1.8rem;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .actions .btn {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ 博客管理面板</h1>
+            <p>欢迎回来，博客所有者！在这里管理您的内容</p>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>📝 文章管理</h2>
+                <p>创建新博客文章，编辑现有文章，管理文章分类和标签。</p>
+                <div class="actions">
+                    <button class="btn" onclick="createNewPost()">创建新文章</button>
+                    <button class="btn btn-secondary" onclick="managePosts()">管理文章</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>💬 评论管理</h2>
+                <p>查看和管理文章评论，审核新评论，删除不当内容。</p>
+                <div class="actions">
+                    <button class="btn" onclick="manageComments()">管理评论</button>
+                    <button class="btn btn-secondary" onclick="addComment()">添加评论</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🖼️ 图片管理</h2>
+                <p>上传和管理博客图片，包括Chef J菜单图片、文章配图等。</p>
+                <div class="actions">
+                    <button class="btn" onclick="uploadImages()">上传图片</button>
+                    <button class="btn btn-secondary" onclick="manageImages()">管理图片</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>🚀 发布管理</h2>
+                <p>预览博客效果，提交更改到GitHub，部署到线上。</p>
+                <div class="actions">
+                    <button class="btn btn-success" onclick="previewBlog()">预览博客</button>
+                    <button class="btn" onclick="commitChanges()">提交更改</button>
+                    <button class="btn btn-secondary" onclick="deployBlog()">部署博客</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Jessi & Achel's Home - 本地管理面板</p>
+        </div>
+    </div>
+
+    <script>
+        // 管理功能的JavaScript实现
+        function createNewPost() {
+            alert('创建新文章功能将在本地环境中实现');
+            // 这里将调用Node.js脚本创建新文章
+        }
+
+        function managePosts() {
+            alert('管理文章功能将在本地环境中实现');
+        }
+
+        function manageComments() {
+            alert('管理评论功能将在本地环境中实现');
+        }
+
+        function addComment() {
+            alert('添加评论功能将在本地环境中实现');
+        }
+
+        function uploadImages() {
+            alert('上传图片功能将在本地环境中实现');
+        }
+
+        function manageImages() {
+            alert('管理图片功能将在本地环境中实现');
+        }
+
+        function previewBlog() {
+            alert('预览博客功能将在本地环境中实现');
+        }
+
+        function commitChanges() {
+            alert('提交更改功能将在本地环境中实现');
+        }
+
+        function deployBlog() {
+            alert('部署博客功能将在本地环境中实现');
+        }
+    </script>
+</body>
+</html>

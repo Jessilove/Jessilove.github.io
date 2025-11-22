@@ -1,0 +1,13 @@
+<div class="post-recent">
+    <div class="pre">
+        {{ if .Prev }}
+        <p><strong>上一篇</strong> <a href="{{ .Prev.RelPermalink }}">{{ .Prev.Title }}</a></p>
+        {{ end }}
+    </div>
+    <div class="nex">
+
+        {{ if .Next }}
+        <p><strong>下一篇</strong> <a href="{{ .Next.RelPermalink }}">{{ .Next.Title }}</a></p>
+        {{ end }}
+    </div>
+</div>

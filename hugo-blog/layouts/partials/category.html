@@ -1,0 +1,12 @@
+{{ $categories := .Params.categories }}
+{{ with $categories }}
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  {{ range $index, $category := $categories }}
+    <a href="{{ "/categories/" | relLangURL }}#{{ $category | urlize }}" title="Category: {{ $category }}" rel="category">{{ $category }}</a>
+    {{ if ne $index (sub (len $categories) 1) }}&nbsp;{{ end }}
+  {{ end }}
+  <!-- <span class="point">•</span> -->
+</span>
+{{ end }}

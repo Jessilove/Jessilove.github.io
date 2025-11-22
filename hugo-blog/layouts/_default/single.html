@@ -1,0 +1,91 @@
+{{ define "main" }}
+<div class="page clearfix" post>
+    <div class="left">
+        <h1>{{ .Title }}</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>{{ .Date.Format "2006-01-02" }}
+            </div>
+
+            <div class="label-card">
+                {{ with .Params.author }}<i class="fa fa-user"></i>{{ . }}
+                {{ end }}
+            </div>
+            <div class="label-card">
+                <p><i class="fa fa-eye fa-x"></i><span id="busuanzi_value_page_pv"></span></p>
+            </div>
+            <div class="label-card">
+                {{ with .Params.meta }}<i class="fa fa-key"></i>{{ . }}{{ end }}
+            </div>
+
+            <div class="label-card">
+                {{ partial "category.html" . }}
+            </div>
+
+            <div class="label-card">
+                {{ partial "tag.html" . }}
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            {{ .Content }}
+        </article>
+        <hr>
+
+        {{ $related := .Site.RegularPages.Related . | first 6 }}
+        {{ with $related }}
+        <h2 id="similar_posts">Similar Posts</h2>
+        <ul>
+            {{ range . }}
+            <li class="relatedPost">
+                <a href="{{ .RelPermalink }}">{{ .Title }}
+                    {{ with .Params.series }}
+                    (Series: {{ . }})
+                    {{ end }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }}
+
+        {{ partial "previousAndNext.html" . }}
+
+        <h2 id="comments">Comments</h2>
+        {{ partial "comments.html" . }}
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    {{ if $related }}
+                    <li><a href="#similar_posts">Similar Posts</a></li>
+                    {{ end }}
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="{{ "js/pageContent.js" | relURL }}" charset="utf-8"></script>
+{{ end }}
