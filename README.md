@@ -1,6 +1,36 @@
-# MY BLOG URL
-**[http://jessilove.github.io/](http://jessilove.github.io/)**
+# 🏡 Jessi & Achel's Home
+
+> **"把星星收集起来，好好保管，不要让它们丢了"**
+
+这里是我们的云上小家，一个记录生活点滴的温暖角落。
+
+## 💝 关于这个小窝
+
+这里收藏着：
+- 📖 **Stories** - 我们一起走过的日子
+- 👨‍🍳 **Chef J** - 佳佳的小饭馆，记录着每一道用心做的美食
+- 📝 **Plans** - 想看的书、想去的地方、想做的事
+- 💕 **Anniversary & Bonus** - 属于我们的特殊日子
+
+## 🌟 我们的故事
+
+从2018年开始，两个人的生活慢慢交织在一起。有开心的时刻，也有想念的日子，有台湾的旅行，也有深夜的思绪。
+
+这个小站最初是想把聊天记录抄下来、把照片打印出来，但工程量太大了。后来想，不如就在这个云上的空间里，把所有美好的瞬间、有趣的故事、温暖的回忆都记录下来。
+
+## 🌈 这里的样子
+
+- 用文字记录心情和生活
+- 用图片定格美好瞬间
+- 用食谱分享幸福味道
+- 偶尔更新，持续记录
+
+## 💌 访问我们的小家
+
+**[https://jessilove.github.io](https://jessilove.github.io)**
 
 ---
 
-Blog from: [http://gaohaoyang.github.io/](http://gaohaoyang.github.io/). THX~
+*这个小站会慢慢变得更好，就像我们的生活一样 ♥*
+
+*Built with love and Hugo*
