@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Api on Jessi &amp; Achel&#39;s Home</title>
+    <link>https://Jessilove.github.io/tags/api/</link>
+    <description>Recent content in Api on Jessi &amp; Achel&#39;s Home</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 22 Nov 2025 21:12:17 +0000</lastBuildDate>
+    <atom:link href="https://Jessilove.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Article with English</title>
+      <link>https://Jessilove.github.io/2025/11/22/test-article-with-english/</link>
+      <pubDate>Sat, 22 Nov 2025 21:12:17 +0000</pubDate>
+      <guid>https://Jessilove.github.io/2025/11/22/test-article-with-english/</guid>
+      <description>&lt;p&gt;This is a test article with English title to test slug generation&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>测试文章</title>
+      <link>https://Jessilove.github.io/2025/11/22/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 22 Nov 2025 21:00:48 +0000</pubDate>
+      <guid>https://Jessilove.github.io/2025/11/22/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</guid>
+      <description>&lt;p&gt;这是一篇通过API创建的测试文章&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
