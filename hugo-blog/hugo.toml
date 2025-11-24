@@ -2,6 +2,8 @@ baseURL = 'https://Jessilove.github.io/'
 title = "Jessi & Achel's Home"
 languageCode = "zh-CN"
 defaultContentLanguage = "zh-cn"
+summaryLength = 70
+hasCJKLanguage = true
 
 [pagination]
   pagerSize = 6
